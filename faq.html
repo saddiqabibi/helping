@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>FAQ - Helpz Charity | Frequently Asked Questions</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="FAQ, Frequently Asked Questions, Helpz Charity, Donation FAQ, Volunteer FAQ, Charity Questions" name="keywords">
+    <meta content="Find answers to frequently asked questions about Helpz Charity — donations, volunteering, programs, transparency, and how you can get involved." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .faq-content {
+            background: #f8f9fa;
+            padding: 50px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .faq-content .section-header {
+            margin-bottom: 40px;
+        }
+        .faq-item {
+            background: #ffffff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            transition: background 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+        .faq-question:hover {
+            background: #f1f3f5;
+        }
+        .faq-question h4 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #4a4c70;
+            flex: 1;
+        }
+        .faq-question .faq-toggle {
+            color: #f6821f;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            min-width: 30px;
+            text-align: center;
+        }
+        .faq-question .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: #fafbfc;
+        }
+        .faq-answer.open {
+            padding: 20px 25px;
+            max-height: 1000px;
+        }
+        .faq-answer p {
+            margin: 0;
+            color: #555;
+            line-height: 1.8;
+        }
+        .faq-answer ul {
+            color: #555;
+            line-height: 1.8;
+            padding-left: 25px;
+            margin-top: 10px;
+        }
+        .faq-answer ul li {
+            margin-bottom: 5px;
+        }
+        .faq-category {
+            color: #f6821f;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .faq-search-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .faq-search-box input {
+            height: 55px;
+            border-radius: 0;
+            border: 2px solid #e9ecef;
+            padding: 0 20px;
+            font-size: 16px;
+        }
+        .faq-search-box input:focus {
+            border-color: #f6821f;
+            box-shadow: none;
+        }
+        .faq-search-box .btn {
+            height: 55px;
+            border-radius: 0;
+            padding: 0 30px;
+            background: #f6821f;
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        .faq-search-box .btn:hover {
+            background: #e0750a;
+        }
+        .faq-category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .faq-category-tabs .btn {
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 2px solid #e9ecef;
+            color: #4a4c70;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        .faq-category-tabs .btn:hover,
+        .faq-category-tabs .btn.active {
+            background: #f6821f;
+            color: white;
+            border-color: #f6821f;
+        }
+        .faq-category-tabs .btn i {
+            margin-right: 8px;
+        }
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+        }
+        .no-results i {
+            font-size: 50px;
+            color: #f6821f;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 767px) {
+            .faq-content {
+                padding: 25px;
+            }
+            .faq-question {
+                padding: 15px 18px;
+            }
+            .faq-question h4 {
+                font-size: 16px;
+            }
+            .faq-answer.open {
+                padding: 15px 18px;
+            }
+            .faq-category-tabs .btn {
+                font-size: 12px;
+                padding: 6px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Bar Start -->
+    <div class="top-bar d-none d-md-block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="top-bar-left">
+                        <div class="text">
+                            <i class="fa fa-phone-alt"></i>
+                            <p>+92 300 1234567</p>
+                        </div>
+                        <div class="text">
+                            <i class="fa fa-envelope"></i>
+                            <p>contact@helpzcharity.org</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="top-bar-right">
+                        <div class="social">
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top Bar End -->
+
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">Helpz</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="causes.html" class="nav-item nav-link">Causes</a>
+                    <a href="event.html" class="nav-item nav-link">Events</a>
+                    <a href="blog.html" class="nav-item nav-link">Blog</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                        <div class="dropdown-menu">
+                            <a href="single.html" class="dropdown-item">Detail Page</a>
+                            <a href="service.html" class="dropdown-item">What We Do</a>
+                            <a href="team.html" class="dropdown-item">Meet The Team</a>
+                            <a href="donate.html" class="dropdown-item">Donate Now</a>
+                            <a href="volunteer.html" class="dropdown-item">Become A Volunteer</a>
+                            <a href="faq.html" class="dropdown-item">FAQ</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="col-12">
+                    <a href="index.html">Home</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- FAQ Content Start -->
+    <div class="container">
+        <div class="faq-content">
+
+            <div class="section-header text-center">
+                <p>Got Questions?</p>
+                <h2>We Have Answers</h2>
+                <p style="max-width: 600px; margin: 10px auto 0; color: #555;">
+                    Find answers to the most common questions about Helpz Charity, our programs, donations, volunteering, and more.
+                </p>
+            </div>
+
+            <!-- Search Box -->
+            <div class="faq-search-box">
+                <div class="row">
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" id="faqSearch" placeholder="Search for answers..." onkeyup="searchFAQ()">
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-custom" style="width: 100%;" onclick="searchFAQ()">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="faq-category-tabs">
+                <button class="btn active" data-category="all" onclick="filterFAQ('all')">
+                    <i class="fas fa-list"></i> All
+                </button>
+                <button class="btn" data-category="donations" onclick="filterFAQ('donations')">
+                    <i class="fas fa-hand-holding-heart"></i> Donations
+                </button>
+                <button class="btn" data-category="volunteer" onclick="filterFAQ('volunteer')">
+                    <i class="fas fa-hands-helping"></i> Volunteer
+                </button>
+                <button class="btn" data-category="programs" onclick="filterFAQ('programs')">
+                    <i class="fas fa-project-diagram"></i> Programs
+                </button>
+                <button class="btn" data-category="transparency" onclick="filterFAQ('transparency')">
+                    <i class="fas fa-shield-alt"></i> Transparency
+                </button>
+                <button class="btn" data-category="general" onclick="filterFAQ('general')">
+                    <i class="fas fa-info-circle"></i> General
+                </button>
+            </div>
+
+            <!-- FAQ Items -->
+            <div id="faqContainer">
+
+                <!-- Category: Donations -->
+                <div class="faq-item" data-category="donations">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How do I make a donation to Helpz Charity?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            You can make a donation through our <a href="donate.html">Donate Now</a> page. We accept donations via credit/debit cards, PayPal, and bank transfers. All donations are securely processed and 100% of your contribution goes toward our programs. If you have any issues, please contact us at <a href="mailto:contact@helpzcharity.org">contact@helpzcharity.org</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="donations">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Is my donation tax-deductible?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Yes, your donation may be tax-deductible depending on your country's tax laws. Helpz Charity is a registered charitable organization. We provide donation receipts for all contributions, which you can use for tax purposes. Please consult your local tax advisor for specific guidance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="donations">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Can I make a recurring monthly donation?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Absolutely! Recurring donations are the backbone of our sustainable programs. You can set up a monthly donation through our <a href="donate.html">Donate Now</a> page. Monthly donations help us plan ahead and ensure consistent support for the communities we serve.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="donations">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How much of my donation goes to the cause?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            <strong>100% of your donation goes directly to our programs.</strong> We are committed to transparency — a small portion may be used for essential administrative costs to ensure our operations run smoothly, but we keep these costs to an absolute minimum. We publish regular financial reports on our website.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="donations">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>What payment methods do you accept?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            We accept major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers. All transactions are processed securely through industry-standard encryption to protect your financial information.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Category: Volunteer -->
+                <div class="faq-item" data-category="volunteer">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How can I become a volunteer?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            You can sign up to volunteer by filling out the form on our <a href="volunteer.html">Become A Volunteer</a> page. Tell us about your skills, interests, and availability, and our Volunteer Coordinator will reach out to you with opportunities that match your profile.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="volunteer">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>What kind of volunteer opportunities are available?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            We offer a variety of volunteer opportunities:
+                        </p>
+                        <ul>
+                            <li><strong>Food Distribution:</strong> Help pack and distribute food packages.</li>
+                            <li><strong>Medical Camps:</strong> Assist with registration and patient support.</li>
+                            <li><strong>Education Support:</strong> Help sort and deliver school supplies.</li>
+                            <li><strong>Social Care:</strong> Visit elderly and isolated community members.</li>
+                            <li><strong>Event Planning:</strong> Help organize fundraising events.</li>
+                            <li><strong>Administrative Support:</strong> Assist with office tasks.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="volunteer">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Do I need special skills to volunteer?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            No, you don't need special skills — just a willingness to help! We provide training and guidance for all volunteers. Whether you can give a few hours a month or several hours a week, we'll find a role that fits your schedule and interests.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Category: Programs -->
+                <div class="faq-item" data-category="programs">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>What programs does Helpz Charity run?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            We run six core programs:
+                        </p>
+                        <ul>
+                            <li><strong>Nutritious Food Distribution:</strong> Weekly food drives for families in need.</li>
+                            <li><strong>Clean Water Access:</strong> Installing filtration systems in villages.</li>
+                            <li><strong>Community Healthcare:</strong> Free medical camps and health education.</li>
+                            <li><strong>Primary Education Support:</strong> Sponsoring school supplies and tuition.</li>
+                            <li><strong>Emergency Shelter & Housing:</strong> Support for displaced families.</li>
+                            <li><strong>Social Care:</strong> Visits to elderly and vulnerable individuals.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="programs">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Where does Helpz Charity work?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            We currently work in underprivileged communities across Lahore and surrounding areas in Pakistan. We are planning to expand to other regions as our resources and capacity grow. Our goal is to reach as many families in need as possible.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="programs">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How do you choose the families you help?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            We work through community referrals and direct outreach. Our team verifies needs through home visits and consultations with local leaders. We prioritize families with young children, elderly members, and those facing the most urgent situations. We treat every family with dignity and respect throughout the process.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Category: Transparency -->
+                <div class="faq-item" data-category="transparency">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How transparent is Helpz Charity?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            <strong>Transparency is our core value.</strong> We publish regular reports on our website showing exactly how funds are used. Every donation is tracked, and we share impact stories from the communities we serve. We believe that donors deserve to see the difference their contributions make.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="transparency">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Can I see where my donation went?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Yes! We provide detailed reports to donors upon request. We also share regular updates on our website and social media showing our projects in action. If you'd like a personalized report, please contact us at <a href="mailto:contact@helpzcharity.org">contact@helpzcharity.org</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Category: General -->
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Who runs Helpz Charity?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Helpz Charity is run by a dedicated team of volunteers and staff who are passionate about serving our communities. Our team includes experienced professionals from various fields — education, healthcare, logistics, and social work. We are guided by a commitment to transparency, accountability, and dignity for all.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How can I stay updated on Helpz Charity's work?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            You can stay connected with us through:
+                        </p>
+                        <ul>
+                            <li><strong>Subscribe to our newsletter</strong> — Enter your email in the footer.</li>
+                            <li><strong>Follow us on social media</strong> — Facebook, Twitter, Instagram.</li>
+                            <li><strong>Read our blog</strong> — Regular updates and stories from the field.</li>
+                            <li><strong>Visit our website</strong> — We post regular updates and reports.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Can I partner with Helpz Charity?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Yes! We welcome partnerships with businesses, other nonprofits, and community organizations. If you're interested in partnering with us, please contact us at <a href="mailto:contact@helpzcharity.org">contact@helpzcharity.org</a> with details about your organization and how you'd like to collaborate.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Is Helpz Charity a registered organization?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Yes, Helpz Charity is a registered charitable organization in Pakistan. We operate in full compliance with local laws and regulations. Our registration details are available upon request.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How can I contact Helpz Charity?</h4>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            You can reach us through the following channels:
+                        </p>
+                        <ul>
+                            <li><strong>Email:</strong> <a href="mailto:contact@helpzcharity.org">contact@helpzcharity.org</a></li>
+                            <li><strong>Phone:</strong> +92 300 1234567</li>
+                            <li><strong>Contact Form:</strong> <a href="contact.html">Contact Us</a> page</li>
+                            <li><strong>Social Media:</strong> Facebook, Twitter, Instagram</li>
+                            <li><strong>Visit our office:</strong> Township, Lahore, Pakistan</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults">
+                <i class="fas fa-search"></i>
+                <h4>No results found</h4>
+                <p>Try using different keywords or browse through the categories above.</p>
+            </div>
+
+            <!-- Still Have Questions -->
+            <div style="background: #f6821f; padding: 30px; border-radius: 8px; margin-top: 30px; text-align: center; color: white;">
+                <h4 style="color: white; margin-bottom: 15px;">Still Have Questions?</h4>
+                <p style="color: white; font-size: 16px; max-width: 500px; margin: 0 auto 20px;">
+                    Didn't find the answer you were looking for? We're here to help!
+                </p>
+                <a href="contact.html" class="btn btn-light" style="color: #f6821f; font-weight: 600; padding: 12px 30px; border-radius: 0;">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <!-- FAQ Content End -->
+
+    <!-- Footer Start -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-contact">
+                        <h2>Our Office</h2>
+                        <p><i class="fa fa-map-marker-alt"></i>Township, Lahore, Pakistan</p>
+                        <p><i class="fa fa-phone-alt"></i>+92 300 1234567</p>
+                        <p><i class="fa fa-envelope"></i>contact@helpzcharity.org</p>
+                        <div class="footer-social">
+                            <a class="btn btn-custom" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-custom" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-custom" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-custom" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-custom" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-link">
+                        <h2>Popular Links</h2>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="causes.html">Popular Causes</a>
+                        <a href="event.html">Upcoming Events</a>
+                        <a href="blog.html">Latest Blog</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-link">
+                        <h2>Legal</h2>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="cookies.html">Cookies Policy</a>
+                        <a href="faq.html">FAQ</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-newsletter">
+                        <h2>Newsletter</h2>
+                        <form>
+                            <input class="form-control" placeholder="Your Email" aria-label="Email for newsletter">
+                            <button class="btn btn-custom" type="submit">Subscribe</button>
+                            <label>We respect your privacy. No spam, ever.</label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container copyright">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; <a href="index.html">Helpz Charity</a>, All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Designed with purpose by <a href="https://htmlcodex.com">HTML Codex</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top" aria-label="Back to top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Pre Loader -->
+    <div id="loader" class="show">
+        <div class="loader"></div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/parallax/parallax.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+        // Toggle FAQ answer
+        function toggleFAQ(element) {
+            var answer = element.nextElementSibling;
+            var toggle = element.querySelector('.faq-toggle');
+            
+            // Close all other FAQs
+            var allAnswers = document.querySelectorAll('.faq-answer');
+            var allToggles = document.querySelectorAll('.faq-toggle');
+            
+            allAnswers.forEach(function(item) {
+                if (item !== answer) {
+                    item.classList.remove('open');
+                }
+            });
+            
+            allToggles.forEach(function(item) {
+                if (item !== toggle) {
+                    item.classList.remove('active');
+                    item.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('open');
+            toggle.classList.toggle('active');
+            
+            if (toggle.classList.contains('active')) {
+                toggle.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            } else {
+                toggle.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            }
+        }
+
+        // Search FAQ
+        function searchFAQ() {
+            var input = document.getElementById('faqSearch');
+            var filter = input.value.toLowerCase();
+            var items = document.querySelectorAll('.faq-item');
+            var hasResults = false;
+            
+            items.forEach(function(item) {
+                var question = item.querySelector('.faq-question h4').textContent.toLowerCase();
+                var answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                var category = item.getAttribute('data-category');
+                
+                if (question.includes(filter) || answer.includes(filter) || filter === '') {
+                    item.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            var noResults = document.getElementById('noResults');
+            if (!hasResults && filter !== '') {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
+        // Filter by category
+        function filterFAQ(category) {
+            var items = document.querySelectorAll('.faq-item');
+            var buttons = document.querySelectorAll('.faq-category-tabs .btn');
+            
+            // Update active button
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Show/hide items
+            items.forEach(function(item) {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Clear search input
+            document.getElementById('faqSearch').value = '';
+            document.getElementById('noResults').style.display = 'none';
+        }
+
+        // Open first FAQ by default
+        document.addEventListener('DOMContentLoaded', function() {
+            var firstFAQ = document.querySelector('.faq-item .faq-question');
+            if (firstFAQ) {
+                // Don't auto-open, let user click
+            }
+        });
+    </script>
+
+</body>
+</html>
